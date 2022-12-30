@@ -1,14 +1,14 @@
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
-from .models import FingerTraining
-from . import db
+from website.models import FingerTraining
+from website import db
 import json
 
-views = Blueprint("views", __name__)
+finger_training = Blueprint("finger_training", __name__)
 
-@views.route("/", methods=["GET", "POST"])
+@finger_training.route("/finger_trainings", methods=["GET", "POST"])
 @login_required
-def home():
+def add_finger_training():
     if request.method == "POST":
         hang = request.form.get("hang", type=int)
         rest = request.form.get("rest")
@@ -22,9 +22,9 @@ def home():
             db.session.commit()
             flash("Record added!", category="success")
     
-    return render_template("home.html", user=current_user)
+    return render_template("finger_training.html", user=current_user)
 
-@views.route("/delete_finger_training", methods=["POST"])
+@finger_training.route("/delete_finger_training", methods=["POST"])
 @login_required
 def delete_finger_training():
     data = json.loads(request.data)

@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify
-from .models import User
-from . import db
+from website.models import User
+from website import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 
@@ -30,7 +30,7 @@ def logout():
     logout_user()
     return redirect(url_for("auth.login"))
 
-@auth.route("/sign-up", methods=["GET", "POST"])
+@auth.route("/sign_up", methods=["GET", "POST"])
 def sign_up():
     if request.method == "POST":
         email = request.form.get("email")

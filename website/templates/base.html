@@ -17,10 +17,11 @@
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<div class="navbar-nav">
 					{% if user.is_authenticated %}
+					<a class="nav-item nav-link" id="finger_training" href="/finger_trainings">Finger Training</a>
 					<a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
 					{% else %}
 					<a class="nav-item nav-link" id="login" href="/login">Login</a>
-					<a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
+					<a class="nav-item nav-link" id="sign_up" href="/sign_up">Sign Up</a>
 					{% endif %}
 				</div>
 			</ul>
